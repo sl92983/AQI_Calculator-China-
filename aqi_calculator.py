@@ -29,6 +29,7 @@ def calc_iaqi(pollutant_level_list, pollutant_value, allow_exceed=True):
 
 
 if __name__ == '__main__':
+    # data for test
     pollutant_data = {
         'SO2_24h': 200,
         'SO2_1h': 1000,
@@ -42,6 +43,7 @@ if __name__ == '__main__':
         'PM25_24h': 99
     }
 
+    # iaqi_result_dict stores all iaqi values.
     iaqi_result_dict = dict()
     iaqi_result_dict['SO2_24h'] = calc_iaqi(so2_24h_list, pollutant_data['SO2_24h'])
     iaqi_result_dict['SO2_1h'] = calc_iaqi(so2_1h_list, pollutant_data['SO2_1h'], allow_exceed=False)
@@ -55,8 +57,11 @@ if __name__ == '__main__':
     iaqi_result_dict['PM25_24h'] = calc_iaqi(pm25_24h_list, pollutant_data['PM25_24h'])
     print(f'IAQI: {iaqi_result_dict}\n')
 
+    # output the AQI value.
     aqi_value = max(iaqi_result_dict.values())
     print(f'AQI: {aqi_value}')
+
+    # output the primary pollutant.
     if aqi_value > 50:
         # primary_pollutant could be more than one.
         primary_pollutant_list = [key for key, value in iaqi_result_dict.items() if value == aqi_value]
