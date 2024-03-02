@@ -1,2 +1,2 @@
-# AQI_Calculator-China-
+# AQI_Calculator_China
 Calculate AQI and IAQI from pollutant data based on China standard.
